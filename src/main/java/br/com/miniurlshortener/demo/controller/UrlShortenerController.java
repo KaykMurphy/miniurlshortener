@@ -28,7 +28,7 @@ public class UrlShortenerController {
     @GetMapping("/{shortCode}")
     public ResponseEntity<Void> redirectToOriginalUrl(@PathVariable String shortCode) {
         String originalUrl = urlShorteningService.getOriginalUrl(shortCode);
-        return ResponseEntity.status(HttpStatus.FOUND)
+        return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY)
                 .header("Location", originalUrl)
                 .build();
     }
