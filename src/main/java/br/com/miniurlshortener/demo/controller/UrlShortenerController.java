@@ -11,6 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
 
+/**
+ * <p>URL shortener Controller. Endpoints to:
+ * <ul>
+ *     <li>Create short URL.</li>
+ *     <li>Redirect to original URL from shortCode of shortened URL.</li>
+ * </ul>
+ * @see br.com.miniurlshortener.demo.model.UrlEntity
+ */
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api")
@@ -18,13 +26,25 @@ public class UrlShortenerController {
 
     private final UrlShorteningService urlShorteningService;
 
-
+    /**
+     * Create shorted URL from original URL.
+     * @param request {@link CreateShortUrlRequest} containing original URL.
+     * @return {@link ResponseEntity} containing shortCode of shortened URL.
+     * @see CreateShortUrlRequest
+     * @see CreateShortUrlResponse
+     */
     @PostMapping("/shorten")
     public ResponseEntity<CreateShortUrlResponse> createShortUrl(@RequestBody @Valid CreateShortUrlRequest request) {
         CreateShortUrlResponse response = urlShorteningService.createShortUrl(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    /**
+     * Redirect to original url from shortCode of shortened URL.
+     * @param shortCode
+     * @return {@link ResponseEntity} with redirect http status and Location header containing the original URL.
+     * @throws br.com.miniurlshortener.demo.exception.UrlNotFoundException
+     */
     @GetMapping("/{shortCode}")
     public ResponseEntity<Void> redirectToOriginalUrl(@PathVariable String shortCode) {
         String originalUrl = urlShorteningService.getOriginalUrl(shortCode);

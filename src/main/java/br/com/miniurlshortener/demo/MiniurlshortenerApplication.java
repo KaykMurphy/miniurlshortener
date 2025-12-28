@@ -3,6 +3,9 @@ package br.com.miniurlshortener.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * App start
+ */
 @SpringBootApplication
 public class MiniurlshortenerApplication {
 
