@@ -17,10 +17,12 @@ O Mini URL Shortener é um serviço web que permite transformar URLs longas em l
 ## 🛠️ Tecnologias Utilizadas
 
 - **Java 17+**
+  - Javadoc 
 - **Spring Boot 3.x**
   - Spring Web
   - Spring Data JPA
   - Spring Validation
+  - Spring OpenAPI
 - **H2 Database** (em memória)
 - **Lombok** (redução de boilerplate)
 - **Maven** (gerenciamento de dependências)
@@ -35,6 +37,7 @@ O projeto segue uma arquitetura em camadas bem definida:
 ├── repository/     # Camada de acesso a dados
 ├── model/          # Entidades JPA
 ├── dto/            # Objetos de transferência de dados
+├── doc/            # Documentação da API
 └── exception/      # Tratamento de exceções customizadas
 ```
 
@@ -54,17 +57,17 @@ Content-Type: application/json
 **Resposta:**
 ```json
 {
-  "shortUrl": "http://localhost:8080/api/aB3xY9"
+  "shortUrl": "http://localhost:8080/aB3xY9"
 }
 ```
 
 ### Redirecionar para URL Original
 
 ```http
-GET /api/{shortCode}
+GET /{shortCode}
 ```
 
-**Resposta:** HTTP 302 (Found) com redirecionamento para a URL original
+**Resposta:** HTTP 301 (Moved Permanently) com redirecionamento para a URL original
 
 ## 🚀 Como Executar
 
@@ -106,7 +109,7 @@ curl -X POST http://localhost:8080/api/shorten \
 
 **Acessar URL curta:**
 ```bash
-curl -L http://localhost:8080/api/{shortCode}
+curl -L http://localhost:8080/{shortCode}
 ```
 
 ### Usando Postman ou Insomnia
