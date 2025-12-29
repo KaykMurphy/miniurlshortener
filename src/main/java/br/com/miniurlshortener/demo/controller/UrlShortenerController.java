@@ -1,15 +1,14 @@
 package br.com.miniurlshortener.demo.controller;
 
+import br.com.miniurlshortener.demo.doc.UrlShortenerControllerSwaggerDoc;
 import br.com.miniurlshortener.demo.dto.CreateShortUrlRequest;
 import br.com.miniurlshortener.demo.dto.CreateShortUrlResponse;
 import br.com.miniurlshortener.demo.service.UrlShorteningService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 
 /**
  * <p>URL shortener Controller. Endpoints to:
@@ -22,7 +21,7 @@ import org.springframework.web.servlet.function.EntityResponse;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api")
-public class UrlShortenerController {
+public class UrlShortenerController implements UrlShortenerControllerSwaggerDoc {
 
     private final UrlShorteningService urlShorteningService;
 
