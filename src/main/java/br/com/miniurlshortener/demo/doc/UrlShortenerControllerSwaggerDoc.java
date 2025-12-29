@@ -55,7 +55,7 @@ public interface UrlShortenerControllerSwaggerDoc {
                     description = "Successfully redirect to original URL",
                     headers = @Header(
                             name = "Location",
-                            example = "http://host/api/vgsNc8"
+                            example = "http://host/vgsNc8"
                     ),
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE

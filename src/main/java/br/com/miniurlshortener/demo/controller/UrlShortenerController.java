@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 public class UrlShortenerController implements UrlShortenerControllerSwaggerDoc {
 
     private final UrlShorteningService urlShorteningService;
@@ -32,7 +32,7 @@ public class UrlShortenerController implements UrlShortenerControllerSwaggerDoc 
      * @see CreateShortUrlRequest
      * @see CreateShortUrlResponse
      */
-    @PostMapping("/shorten")
+    @PostMapping("/api/shorten")
     public ResponseEntity<CreateShortUrlResponse> createShortUrl(@RequestBody @Valid CreateShortUrlRequest request) {
         CreateShortUrlResponse response = urlShorteningService.createShortUrl(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
